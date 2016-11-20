@@ -1,6 +1,26 @@
-== Configure the Bluetooth (BT) device with an USB Serial converter
+== Send data to Arduino Nano using "Bluetooth BLE CC41-A"
 
-=== Enter AT mode
+The Bluetooth device is a "special" HM-10 BLE (Bluetooth Low Energy) device,
+developed by Bolutek under the name CC41-A.
+
+=== Pinouts and connections
+
+.Arduino nano
+image::images\communication-6571d.png[]
+
+.Connect the CC41-A Bluetooth to Arduino Nano
+image::images\communication-0dc10.png[]
+
+.References
+http://www.martyncurrey.com/arduino-with-hc-05-bluetooth-module-at-mode[]
+
+.USB cable
+
+
+== Test the Bluetooth (BT) device (AT mode)
+
+=== Configure the BT device with an USB Serial converter
+
 I connected the BT device via an USB to serial converter (CP2102 breakoutboard)
 to the PC.
 
@@ -20,9 +40,9 @@ IMPORTANT: First make the connections and then plug in the USB converter into
 the USB port!
 
 .Use HTerm to connect
-COM settings: baud rate 9600, data 8, stop 1, parity none
-Also check that after the string to be sent automatically a newline character
-should be sent.
+COM settings: baud rate 9600, data 8, stop 1, parity none +
+Also check that after the string automatically a newline character
+will be sent.
 
 To check that the connection is ok type *AT* and press ENTER.
 The response should be:
@@ -78,7 +98,33 @@ To check all available commands send *AT+HELP*
  ********************************************************************
 
 
-
 === References
 * http://www.martyncurrey.com/bluetooth-modules[]
 * http://www.instructables.com/id/AT-command-mode-of-HC-05-Bluetooth-module[]
+
+
+== Connect to the BT device from Android
+
+IMPORTANT: Not all Bluetooth applications support connections to BLE devices!!!
+
+I tried several Bluetooth applications until I managed to connect and exchange
+data with the BT device.
+
+With the applications that do not support connections to BLE devices one can see
+the device while scanning but then the connection fails or it s reported rejected!
+
+TIP: Find out *exactly* which BT device you have and then google for examples!
+
+I personally used
+https://play.google.com/store/apps/details?id=com.manishtaraiya.bleterm[BleTerm]
+
+
+IMPORTANT: In order to be able to send and receive data one must choose the
+proper *Service* and *Chaacteristic* ID.
+
+Touch and hold the *Write* and *Read* buttons to select the proper IDs:
+
+image::images\communication-4e604.png["Select IDs",width=128,link="images\communication-4e604.png"]
+
+In order to find out the IDs for your device, you have to send the *AT+UUID* and
+*AT+CHAR* commands. See <<Enter AT mode>>
