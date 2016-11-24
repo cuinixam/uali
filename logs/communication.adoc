@@ -127,4 +127,4 @@ Touch and hold the *Write* and *Read* buttons to select the proper IDs:
 image::images\communication-4e604.png["Select IDs",width=128,link="images\communication-4e604.png"]
 
 In order to find out the IDs for your device, you have to send the *AT+UUID* and
-*AT+CHAR* commands. See <<Enter AT mode>>
+*AT+CHAR* commands. See <<Test the Bluetooth (BT) device (AT mode)>>
