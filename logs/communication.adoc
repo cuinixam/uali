@@ -128,3 +128,26 @@ image::images\communication-4e604.png["Select IDs",width=128,link="images\commun
 
 In order to find out the IDs for your device, you have to send the *AT+UUID* and
 *AT+CHAR* commands. See <<Test the Bluetooth (BT) device (AT mode)>>
+
+In my case
+
+ * *AT+UUID* command returned [green]#ffe0#
+ * *AT+CHAR* command returned [green]#ffe1#
+
+From the
+https://www.bluetooth.com/specifications/assigned-numbers/service-discovery[BLE documentation]
+one can get the Base Universally Unique Identifier (UUID)
+
+[grid="rows",format="csv"]
+[options="header"]
+|===========================
+UUID Name, 	UUID
+BASE_UUID, 	00000000-0000-1000-8000-00805F9B34FB
+|===========================
+
+
+Using the UUID and CHAR codes received from the BLE device and the base 128-bit
+UUID one can construct the service and characteristic codes:
+
+* 0000ffe0-0000-1000-8000-00805F9B34FB
+* 0000ffe1-0000-1000-8000-00805F9B34FB
